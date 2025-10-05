@@ -164,3 +164,25 @@ Blockly.Blocks['picar_init'] = {
     this.setHelpUrl("");
   }
 };
+
+Blockly.Blocks['picar_rawCode'] = {
+  init: function() {
+    this.appendDummyInput()
+        // 區塊最左邊的文字
+        .appendField("自由寫"); 
+    
+    // 關鍵修改：使用 Blockly.FieldMultilineInput 欄位
+    this.appendDummyInput('CODE_INPUT')
+        .appendField(new Blockly.FieldMultilineInput(''), 'CODE'); // 'CODE' 是欄位的名稱
+    
+    // 設置外觀和連接
+    this.setPreviousStatement(true, null); // 允許前面連接
+    this.setNextStatement(true, null);     // 允許後面連接
+    this.setColour(Blockly.Msg["PICAR_HUE"]);
+    this.setTooltip("可填入任意程式碼或註解");
+    this.setHelpUrl("");
+    
+    // 將輸入設定為非內嵌，讓多行輸入框有更多空間
+    this.setInputsInline(false); 
+  }
+};

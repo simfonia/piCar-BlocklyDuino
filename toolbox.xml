@@ -1,5 +1,6 @@
 <category id="category_simfonia" name="%{BKY_SIMFONIA_CATEGORY}" colour="%{BKY_SIMFONIA_HUE}">
     <category id="category_picar" name="%{BKY_PICAR_CATEGORY}" colour="%{BKY_PICAR_HUE}">
+        <block type="picar_rawCode"></block>
         <block type="picar_init"></block>
         <block type="picar_set_hand_range">
             <value name="RANGE">

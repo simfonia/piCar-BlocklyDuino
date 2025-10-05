@@ -288,3 +288,8 @@ Blockly.Arduino['picar_init'] = function(block) {
 
   return ''; // This block doesn\'t generate code directly in the loop
 };
+
+Blockly.Arduino['picar_rawCode'] = function(block) {
+  var code = block.getFieldValue('CODE');
+  return code + '\n'; // Output the text as-is, with a newline
+};
