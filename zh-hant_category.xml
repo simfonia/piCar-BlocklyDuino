@@ -1,1 +1,4 @@
-<xml><category><name>%{BKY_SIMFONIA_CATEGORY}</name><replace>simfonia</replace></category><category><name>%{BKY_PICAR_CATEGORY}</name><replace>piCar</replace></category></xml>
+<xml>
+    <category><name>%{BKY_SIMFONIA_CATEGORY}</name><replace>simfonia</replace></category>
+    <category><name>%{BKY_PICAR_CATEGORY}</name><replace>piCar</replace></category>
+</xml>
