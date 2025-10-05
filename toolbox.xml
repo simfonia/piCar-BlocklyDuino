@@ -1,0 +1,40 @@
+<category id="category_simfonia" name="%{BKY_SIMFONIA_CATEGORY}" colour="%{BKY_SIMFONIA_HUE}">
+    <category id="category_picar" name="%{BKY_PICAR_CATEGORY}" colour="%{BKY_PICAR_HUE}">
+        <block type="picar_init"></block>
+        <block type="picar_set_hand_range">
+            <value name="RANGE">
+                <shadow type="math_number">
+                    <field name="NUM">170</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="picar_drive">
+            <value name="POWER_L">
+                <shadow type="math_number">
+                    <field name="NUM">255</field>
+                </shadow>
+            </value>
+            <value name="POWER_R">
+                <shadow type="math_number">
+                    <field name="NUM">255</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="picar_coast"></block>
+        <block type="picar_brake"></block>
+        <block type="picar_resetPiCar"></block>
+        <block type="picar_checkDistance"></block>
+        <block type="picar_checkColor"></block>
+        <block type="picar_inPosition"></block>
+        <block type="picar_closeHands"></block>
+        <block type="picar_openHands"></block>
+        <block type="picar_flashingLight"></block>
+        <block type="picar_easterEgg">
+            <value name="TEMPO">
+                <shadow type="math_number">
+                    <field name="NUM">1000</field>
+                </shadow>
+            </value>
+        </block>
+    </category>
+</category>
