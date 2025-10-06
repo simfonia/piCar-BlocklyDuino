@@ -1,6 +1,5 @@
 <category id="category_simfonia" name="%{BKY_SIMFONIA_CATEGORY}" colour="%{BKY_SIMFONIA_HUE}">
     <category id="category_picar" name="%{BKY_PICAR_CATEGORY}" colour="%{BKY_PICAR_HUE}">
-        <block type="picar_rawCode"></block>
         <block type="picar_init"></block>
         <block type="picar_set_hand_range">
             <value name="RANGE">
@@ -9,6 +8,7 @@
                 </shadow>
             </value>
         </block>
+        <block type="picar_resetPiCar"></block>
         <block type="picar_drive">
             <value name="POWER_L">
                 <shadow type="math_number">
@@ -23,7 +23,6 @@
         </block>
         <block type="picar_coast"></block>
         <block type="picar_brake"></block>
-        <block type="picar_resetPiCar"></block>
         <block type="picar_checkDistance"></block>
         <block type="picar_checkColor"></block>
         <block type="picar_inPosition"></block>
@@ -37,5 +36,6 @@
                 </shadow>
             </value>
         </block>
+        <block type="picar_rawCode"></block>
     </category>
 </category>
