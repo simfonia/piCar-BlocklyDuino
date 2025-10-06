@@ -31,7 +31,7 @@ Blockly.Arduino['picar_init'] = function(block) {
     '// 創建 NeoPixel 燈條物件 strip \n' +
     '// 設定(個數,腳位,RGB傳送順序+通訊速率)\n' +
     '// WS2812B燈條的顏色傳送順序是 GRB, 工作頻率是 800 KHz\n' +
-    'Adafruit_NeoPixel strip(2, pinRGB, NEO_GRB + NEO_KHZ800);\n';
+    'Adafruit_NeoPixel strip(2, pinRGB, NEO_GRB + NEO_KHZ800);\n\n';
 
   // 函數定義
   // 重置
@@ -48,8 +48,8 @@ Blockly.Arduino['picar_init'] = function(block) {
     '  powerL = constrain(powerL, -255, 255);  // -255<= powerL <= 255\n' +
     '  powerR = constrain(powerR, -255, 255);  // -255<= powerR <= 255\n\n' +
     '  if (powerL > 0) {\n' +
-    '    analogWrite(pinM1A, powerL);\n' + 
-    '    analogWrite(pinM1B, 0);\n' + 
+    '    analogWrite(pinM1A, powerL);\n' +
+    '    analogWrite(pinM1B, 0);\n' +
     '  } else {\n' +
     '    analogWrite(pinM1A, 0);\n' +
     '    analogWrite(pinM1B, -powerL);\n' +
@@ -94,7 +94,7 @@ Blockly.Arduino['picar_init'] = function(block) {
     '  digitalWrite(pinTrig, HIGH);\n' +
     '  delayMicroseconds(10);\n' +
     '  digitalWrite(pinTrig, LOW);\n\n' +
-    '  // Measure the response from the HC-SR04P Echo Pin.\n' + 
+    '  // Measure the response from the HC-SR04P Echo Pin.\n' +
     '  int duration = pulseIn(pinEcho, HIGH);\n\n' +
     '  // Determine distance from duration\n' +
     '  // Use 340 meters per second as speed of sound\n' +
@@ -133,16 +133,30 @@ Blockly.Arduino['picar_init'] = function(block) {
     '}\n';
 
 
-  // 手臂張開
-  Blockly.Arduino.definitions_['define_openHands'] =
-    'void openHands(){\n' +
-    '  for (int i = 0; i <= g_hand_range; i++){\n' +
-    '    handL.write(i+180-g_hand_range);\n' +
-    '    handR.write(g_hand_range-i);\n' +
-    '    delay(7);\n' +
-    '  }\n' +
-    '}\n';
-
+    // 手臂張開
+    Blockly.Arduino.definitions_['define_openHands'] = 
+      'void openHands(){\n' +
+      '  for (int i = 0; i <= g_hand_range; i++){\n' +
+      '    handL.write(i+180-g_hand_range);\n' +
+      '    handR.write(g_hand_range-i);\n' +
+      '    delay(7);\n' +
+      '  }\n' +
+      '}\n';
+  
+    // 設定左手角度
+    Blockly.Arduino.definitions_['define_setLeftHandAngle'] = 
+      'void setLeftHandAngle(int angle){\n' +
+      '  angle = constrain(angle, 0, 180);\n' +
+      '  handL.write(angle);\n' +
+      '}\n';
+  
+    // 設定右手角度
+    Blockly.Arduino.definitions_['define_setRightHandAngle'] = 
+      'void setRightHandAngle(int angle){\n' +
+      '  angle = constrain(angle, 0, 180);\n' +
+      '  handR.write(angle);\n' +
+      '}\n';
+  
   // 燈光閃爍
   Blockly.Arduino.definitions_['define_flashingLight'] =
     'void flashingLight(){\n' +
@@ -203,7 +217,7 @@ Blockly.Arduino['picar_init'] = function(block) {
   Blockly.Arduino.setups_['setup_beep'] = 'tone(pinBuzzer, 440, 200);  // watch out!\n';
   Blockly.Arduino.setups_['setup_wait_button'] = 'while (digitalRead(pinBtnStart)) {  // Wait for button event\n    // I haven\'t pressed the start button yet, just idling here waiting.\n  }\n  delay(500);\n\n  //Your code starts here...';
 
-  return ''; // This block doesn\'t generate code directly in the loop
+  return ''; // This block doesnot generate code directly in the loop
 };
 
 
@@ -233,16 +247,15 @@ Blockly.Arduino['picar_drive'] = function(block) {
   return code;
 };
 
-// 滑行
-Blockly.Arduino['picar_coast'] = function(block) {
-  var code = 'coast();\n';
-  return code;
-};
-
-
-// 煞車
-Blockly.Arduino['picar_brake'] = function(block) {
-  var code = 'brake();\n';
+// 停車
+Blockly.Arduino['picar_stop'] = function(block) {
+  var dropdown_mode = block.getFieldValue('MODE');
+  var code = '';
+  if (dropdown_mode == 'COAST') {
+    code = 'coast();\n';
+  } else if (dropdown_mode == 'BRAKE') {
+    code = 'brake();\n';
+  }
   return code;
 };
 
@@ -266,6 +279,18 @@ Blockly.Arduino['picar_inPosition'] = function(block) {
   return 'inPosition();\n';
 };
 
+// 設定左手角度
+Blockly.Arduino['simfonia_set_left_hand_angle'] = function(block) {
+  var angle = Blockly.Arduino.valueToCode(block, 'ANGLE', Blockly.Arduino.ORDER_ATOMIC) || '180';
+  return 'setLeftHandAngle(' + angle + ');\n';
+};
+
+// 設定右手角度
+Blockly.Arduino['simfonia_set_right_hand_angle'] = function(block) {
+  var angle = Blockly.Arduino.valueToCode(block, 'ANGLE', Blockly.Arduino.ORDER_ATOMIC) || '0';
+  return 'setRightHandAngle(' + angle + ');\n';
+};
+
 // 手臂合起
 Blockly.Arduino['picar_closeHands'] = function(block) {
   return 'closeHands();\n';
@@ -275,6 +300,27 @@ Blockly.Arduino['picar_closeHands'] = function(block) {
 // 手臂張開
 Blockly.Arduino['picar_openHands'] = function(block) {
   return 'openHands();\n';
+};
+
+
+// 設定RGB燈顏色
+Blockly.Arduino['picar_set_led_color'] = function(block) {
+  var ledIndex = block.getFieldValue('LED_INDEX');
+  var color = block.getFieldValue('COLOR');
+  // Convert hex color to R, G, B
+  var r = parseInt(color.substring(1, 3), 16);
+  var g = parseInt(color.substring(3, 5), 16);
+  var b = parseInt(color.substring(5, 7), 16);
+
+  var code = '';
+  if (ledIndex === 'ALL') {
+    code += 'strip.setPixelColor(0, strip.Color(' + r + ', ' + g + ', ' + b + '));\n';
+    code += 'strip.setPixelColor(1, strip.Color(' + r + ', ' + g + ', ' + b + '));\n';
+  } else {
+    code += 'strip.setPixelColor(' + ledIndex + ', strip.Color(' + r + ', ' + g + ', ' + b + '));\n';
+  }
+  code += 'strip.show();\n';
+  return code;
 };
 
 
