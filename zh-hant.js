@@ -1,13 +1,18 @@
 // Traditional Chinese language file
 Blockly.Msg["SIMFONIA_CATEGORY"] = "simfonia";
 Blockly.Msg["PICAR_CATEGORY"] = "πCar";
+Blockly.Msg["ARDUINO_CATEGORY"] = "Arduino";
 Blockly.Msg["SIMFONIA_HUE"] = "#5b33a5"; // A nice purple
+Blockly.Msg["ARDUINO_HUE"] = "#4287f5"; // for Arduino
 Blockly.Msg["PICAR_HUE"] = "#ee5b56"; // for piCar movement
 Blockly.Msg["PICAR_SETUP_HUE"] = "#0872e2"; // for initialization
 Blockly.Msg["COLOR_SENSOR_HUE"] = "#b1b100"; // for sensor
 Blockly.Msg["SERVO_HUE"] = "#07a91d"; // for servo
 Blockly.Msg["MEDIA_HUE"] = "#de57ad"; // for multimedia
 Blockly.Msg["ADVANCED_HUE"] = "#556f79"; // for advanced coding
+Blockly.Msg["ARDUINO_CONTROL_HUE"] = "#0872e2"; // for Arduino I/O
+Blockly.Msg["ARDUINO_DIGITAL_IO_HUE"] = "#455A64"; // for Arduino Digital I/O
+Blockly.Msg["ARDUINO_ANALOG_IO_HUE"] = "#FF9800"; // for Arduino Analog I/O
 
 // Block Keys
 Blockly.Msg["PICAR_INIT"] = "初始化 piCar";
@@ -51,3 +56,22 @@ Blockly.Msg["PICAR_EASTER_EGG"] = "播放彩蛋旋律 全音符的時間 (ms)";
 Blockly.Msg["PICAR_EASTER_EGG_TOOLTIP"] = "播放一段旋律，數值愈大愈慢";
 Blockly.Msg["PICAR_RAW_CODE"] = "自由寫";
 Blockly.Msg["PICAR_RAW_CODE_TOOLTIP"] = "可填入任意程式碼或註解";
+
+// Arduino Blocks
+Blockly.Msg["ARDUINO_PIN_MODE"] = "pinMode(腳位: %1, 模式: %2)";
+Blockly.Msg["ARDUINO_PIN_MODE_TOOLTIP"] = "將指定的腳位設定為輸入或輸出。詳細資訊請見 https://www.arduino.cc/reference/en/language/functions/digital-io/pinmode/";
+Blockly.Msg["ARDUINO_PIN_MODE_INPUT"] = "INPUT";
+Blockly.Msg["ARDUINO_PIN_MODE_OUTPUT"] = "OUTPUT";
+Blockly.Msg["ARDUINO_PIN_MODE_INPUT_PULLUP"] = "INPUT_PULLUP";
+
+Blockly.Msg["ARDUINO_DIGITAL_READ"] = "digitalRead(腳位: %1)";
+Blockly.Msg["ARDUINO_DIGITAL_READ_TOOLTIP"] = "讀取指定數位腳位的狀態，HIGH 或 LOW。詳細資訊請見 https://www.arduino.cc/reference/en/language/functions/digital-io/digitalread/";
+Blockly.Msg["ARDUINO_DIGITAL_WRITE"] = "digitalWrite(腳位: %1, 值: %2)";
+Blockly.Msg["ARDUINO_DIGITAL_WRITE_TOOLTIP"] = "將 HIGH 或 LOW 值寫入數位腳位。詳細資訊請見 https://www.arduino.cc/reference/en/language/functions/digital-io/digitalwrite/";
+Blockly.Msg["ARDUINO_HIGH"] = "HIGH";
+Blockly.Msg["ARDUINO_LOW"] = "LOW";
+
+Blockly.Msg["ARDUINO_ANALOG_READ"] = "analogRead(腳位: %1)";
+Blockly.Msg["ARDUINO_ANALOG_READ_TOOLTIP"] = "讀取指定類比腳位的狀態。詳細資訊請見 https://www.arduino.cc/reference/en/language/functions/analog-io/analogread/";
+Blockly.Msg["ARDUINO_ANALOG_WRITE"] = "analogWrite(腳位: %1, 值: %2)";
+Blockly.Msg["ARDUINO_ANALOG_WRITE_TOOLTIP"] = "將類比值 (PWM 波) 寫入腳位。詳細資訊請見 https://www.arduino.cc/reference/en/language/functions/analog-io/analogwrite/";

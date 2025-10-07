@@ -260,3 +260,132 @@ Blockly.Blocks['picar_rawCode'] = {
     this.setInputsInline(false); 
   }
 };
+
+
+Blockly.Blocks['arduino_pin_mode'] = {
+  init: function() {
+    this.jsonInit({
+      "message0": Blockly.Msg.ARDUINO_PIN_MODE,
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "PIN",
+          "text": "0"
+        },
+        {
+          "type": "field_dropdown",
+          "name": "MODE",
+          "options": [
+            [Blockly.Msg.ARDUINO_PIN_MODE_OUTPUT, "OUTPUT"],
+            [Blockly.Msg.ARDUINO_PIN_MODE_INPUT, "INPUT"],
+            [Blockly.Msg.ARDUINO_PIN_MODE_INPUT_PULLUP, "INPUT_PULLUP"]
+          ]
+        }
+      ],
+      "inputsInline": true,
+      "previousStatement": true,
+      "nextStatement": true,
+      "colour": Blockly.Msg.ARDUINO_CONTROL_HUE,
+      "tooltip": Blockly.Msg.ARDUINO_PIN_MODE_TOOLTIP,
+      "helpUrl": "https://www.arduino.cc/reference/en/language/functions/digital-io/pinmode/"
+    });
+  }
+};
+
+
+Blockly.Blocks['arduino_digital_read'] = {
+  init: function() {
+    this.jsonInit({
+      "message0": Blockly.Msg.ARDUINO_DIGITAL_READ,
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "PIN",
+          "text": "0"
+        }
+      ],
+      "inputsInline": true,
+      "output": "Number", // digitalRead returns an int (HIGH/LOW)
+      "colour": Blockly.Msg.ARDUINO_DIGITAL_IO_HUE,
+      "tooltip": Blockly.Msg.ARDUINO_DIGITAL_READ_TOOLTIP,
+      "helpUrl": "https://www.arduino.cc/reference/en/language/functions/digital-io/digitalread/"
+    });
+  }
+};
+
+Blockly.Blocks['arduino_digital_write'] = {
+  init: function() {
+    this.jsonInit({
+      "message0": Blockly.Msg.ARDUINO_DIGITAL_WRITE,
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "PIN",
+          "text": "0"
+        },
+        {
+          "type": "field_dropdown",
+          "name": "VALUE",
+          "options": [
+            [Blockly.Msg.ARDUINO_HIGH, "HIGH"],
+            [Blockly.Msg.ARDUINO_LOW, "LOW"]
+          ]
+        }
+      ],
+      "inputsInline": true,
+      "previousStatement": true,
+      "nextStatement": true,
+      "colour": Blockly.Msg.ARDUINO_DIGITAL_IO_HUE,
+      "tooltip": Blockly.Msg.ARDUINO_DIGITAL_WRITE_TOOLTIP,
+      "helpUrl": "https://www.arduino.cc/reference/en/language/functions/digital-io/digitalwrite/"
+    });
+  }
+};
+
+
+Blockly.Blocks['arduino_analog_read'] = {
+  init: function() {
+    this.jsonInit({
+      "message0": Blockly.Msg.ARDUINO_ANALOG_READ,
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "PIN",
+          "text": "A0" // Default to analog pin
+        }
+      ],
+      "inputsInline": true,
+      "output": "Number", // analogRead returns an int (0-1023)
+      "colour": Blockly.Msg.ARDUINO_ANALOG_IO_HUE,
+      "tooltip": Blockly.Msg.ARDUINO_ANALOG_READ_TOOLTIP,
+      "helpUrl": "https://www.arduino.cc/reference/en/language/functions/analog-io/analogread/"
+    });
+  }
+};
+
+Blockly.Blocks['arduino_analog_write'] = {
+  init: function() {
+    this.jsonInit({
+      "message0": Blockly.Msg.ARDUINO_ANALOG_WRITE,
+      "args0": [
+        {
+          "type": "field_input",
+          "name": "PIN",
+          "text": "3" // Default to a common PWM pin
+        },
+        {
+          "type": "input_value",
+          "name": "VALUE",
+          "check": "Number"
+        }
+      ],
+      "inputsInline": true,
+      "previousStatement": true,
+      "nextStatement": true,
+      "colour": Blockly.Msg.ARDUINO_ANALOG_IO_HUE,
+      "tooltip": Blockly.Msg.ARDUINO_ANALOG_WRITE_TOOLTIP,
+      "helpUrl": "https://www.arduino.cc/reference/en/language/functions/analog-io/analogwrite/"
+    });
+  }
+};
+

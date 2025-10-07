@@ -342,3 +342,39 @@ Blockly.Arduino['picar_rawCode'] = function(block) {
   var code = block.getFieldValue('CODE');
   return code + '\n'; // Output the text as-is, with a newline
 };
+
+
+Blockly.Arduino['arduino_pin_mode'] = function(block) {
+  var pin = block.getFieldValue('PIN');
+  var mode = block.getFieldValue('MODE');
+  var code = 'pinMode(' + pin + ', ' + mode + ');\n';
+  return code;
+};
+
+
+Blockly.Arduino['arduino_digital_read'] = function(block) {
+  var pin = block.getFieldValue('PIN');
+  var code = 'digitalRead(' + pin + ')';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino['arduino_digital_write'] = function(block) {
+  var pin = block.getFieldValue('PIN');
+  var value = block.getFieldValue('VALUE');
+  var code = 'digitalWrite(' + pin + ', ' + value + ');\n';
+  return code;
+};
+
+
+Blockly.Arduino['arduino_analog_read'] = function(block) {
+  var pin = block.getFieldValue('PIN');
+  var code = 'analogRead(' + pin + ')';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino['arduino_analog_write'] = function(block) {
+  var pin = block.getFieldValue('PIN');
+  var value = Blockly.Arduino.valueToCode(block, 'VALUE', Blockly.Arduino.ORDER_ATOMIC) || '0';
+  var code = 'analogWrite(' + pin + ', ' + value + ');\n';
+  return code;
+};
