@@ -239,11 +239,11 @@ Blockly.Blocks['picar_easterEgg'] = {
 
 
 
-Blockly.Blocks['picar_rawCode'] = {
+Blockly.Blocks['coding_raw_statement'] = {
   init: function() {
     this.appendDummyInput()
         // 區塊最左邊的文字
-        .appendField(Blockly.Msg["PICAR_RAW_CODE"]); 
+        .appendField(Blockly.Msg["CODING_RAW_STATEMENT"]); 
     
     // 關鍵修改：使用 Blockly.FieldMultilineInput 欄位
     this.appendDummyInput('CODE_INPUT')
@@ -252,8 +252,8 @@ Blockly.Blocks['picar_rawCode'] = {
     // 設置外觀和連接
     this.setPreviousStatement(true, null); // 允許前面連接
     this.setNextStatement(true, null);     // 允許後面連接
-    this.setColour(Blockly.Msg["ADVANCED_HUE"]);
-    this.setTooltip(Blockly.Msg["PICAR_RAW_CODE_TOOLTIP"]);
+    this.setColour(Blockly.Msg["CODING_HUE"]);
+    this.setTooltip(Blockly.Msg["CODING_RAW_STATEMENT_TOOLTIP"]);
     this.setHelpUrl("");
     
     // 將輸入設定為非內嵌，讓多行輸入框有更多空間
@@ -262,54 +262,112 @@ Blockly.Blocks['picar_rawCode'] = {
 };
 
 
+Blockly.Blocks['coding_raw_input'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(Blockly.Msg["CODING_RAW_INPUT"])
+        .appendField(new Blockly.FieldMultilineInput(''), 'CODE');
+    this.setOutput(true, null);
+    this.setColour(Blockly.Msg["CODING_HUE"]);
+    this.setTooltip(Blockly.Msg["CODING_RAW_INPUT_TOOLTIP"]);
+    this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['coding_raw_definition'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(Blockly.Msg["CODING_RAW_DEFINITION"])
+        .appendField(new Blockly.FieldMultilineInput(''), 'CODE');
+    this.setNextStatement(true, null);
+    this.setColour(Blockly.Msg["CODING_HUE"]);
+    this.setTooltip(Blockly.Msg["CODING_RAW_DEFINITION_TOOLTIP"]);
+    this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['coding_raw_wrapper'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(Blockly.Msg["CODING_RAW_WRAPPER_TOP"])
+        .appendField(new Blockly.FieldMultilineInput(''), 'CODE_TOP');
+    this.appendStatementInput("DO")
+        .setCheck(null);
+    this.appendDummyInput()
+        .appendField(Blockly.Msg["CODING_RAW_WRAPPER_BOTTOM"])
+        .appendField(new Blockly.FieldMultilineInput(''), 'CODE_BOTTOM');
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(Blockly.Msg["CODING_HUE"]);
+    this.setTooltip(Blockly.Msg["CODING_RAW_WRAPPER_TOOLTIP"]);
+    this.setHelpUrl("");
+  }
+};
+
+
 Blockly.Blocks['arduino_pin_mode'] = {
   init: function() {
-    this.jsonInit({
-      "message0": Blockly.Msg.ARDUINO_PIN_MODE,
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "PIN",
-          "text": "0"
-        },
-        {
-          "type": "field_dropdown",
-          "name": "MODE",
-          "options": [
-            [Blockly.Msg.ARDUINO_PIN_MODE_OUTPUT, "OUTPUT"],
-            [Blockly.Msg.ARDUINO_PIN_MODE_INPUT, "INPUT"],
-            [Blockly.Msg.ARDUINO_PIN_MODE_INPUT_PULLUP, "INPUT_PULLUP"]
-          ]
-        }
-      ],
-      "inputsInline": true,
-      "previousStatement": true,
-      "nextStatement": true,
-      "colour": Blockly.Msg.ARDUINO_CONTROL_HUE,
-      "tooltip": Blockly.Msg.ARDUINO_PIN_MODE_TOOLTIP,
-      "helpUrl": "https://www.arduino.cc/reference/en/language/functions/digital-io/pinmode/"
-    });
+    this.appendDummyInput()
+        .appendField("pinMode(");
+    this.appendValueInput("PIN")
+        .setCheck(["Number", "String"]);
+    this.appendDummyInput()
+        .appendField(",");
+    this.appendValueInput("MODE")
+        .setCheck("String");
+    this.appendDummyInput()
+        .appendField(")");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(Blockly.Msg.ARDUINO_CONTROL_HUE);
+    this.setTooltip(Blockly.Msg.ARDUINO_PIN_MODE_TOOLTIP);
+    this.setHelpUrl("https://www.arduino.cc/reference/en/language/functions/digital-io/pinmode/");
+  }
+};
+
+Blockly.Blocks['arduino_pin_mode_mode_shadow'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(Blockly.Msg.ARDUINO_MODE_LABEL)
+        .appendField(new Blockly.FieldDropdown([
+          [Blockly.Msg.ARDUINO_PIN_MODE_OUTPUT, "OUTPUT"],
+          [Blockly.Msg.ARDUINO_PIN_MODE_INPUT, "INPUT"],
+          [Blockly.Msg.ARDUINO_PIN_MODE_INPUT_PULLUP, "INPUT_PULLUP"]
+        ]), "MODE");
+    this.setOutput(true, "String");
+    this.setColour(Blockly.Msg.ARDUINO_CONTROL_HUE);
+    this.setTooltip(Blockly.Msg.ARDUINO_PIN_MODE_TOOLTIP);
+    this.setHelpUrl("https://www.arduino.cc/reference/en/language/functions/digital-io/pinmode/");
+  }
+};
+
+Blockly.Blocks['arduino_pin_shadow'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(Blockly.Msg.ARDUINO_PIN_LABEL)
+        .appendField(new Blockly.FieldTextInput("0"), "PIN");
+    this.setOutput(true, ["Number", "String"]);
+    this.setColour(Blockly.Msg.ARDUINO_CONTROL_HUE);
+    this.setTooltip(Blockly.Msg.ARDUINO_PIN_MODE_TOOLTIP);
+    this.setHelpUrl("https://www.arduino.cc/reference/en/language/functions/digital-io/pinmode/");
   }
 };
 
 
 Blockly.Blocks['arduino_digital_read'] = {
   init: function() {
-    this.jsonInit({
-      "message0": Blockly.Msg.ARDUINO_DIGITAL_READ,
-      "args0": [
-        {
-          "type": "field_input",
-          "name": "PIN",
-          "text": "0"
-        }
-      ],
-      "inputsInline": true,
-      "output": "Number", // digitalRead returns an int (HIGH/LOW)
-      "colour": Blockly.Msg.ARDUINO_DIGITAL_IO_HUE,
-      "tooltip": Blockly.Msg.ARDUINO_DIGITAL_READ_TOOLTIP,
-      "helpUrl": "https://www.arduino.cc/reference/en/language/functions/digital-io/digitalread/"
-    });
+    this.appendDummyInput()
+        .appendField(Blockly.Msg.ARDUINO_DIGITAL_READ + "(");
+    this.appendValueInput("PIN")
+        .setCheck(["Number", "String"]);
+    this.appendDummyInput()
+        .appendField(")");
+    this.setInputsInline(true);
+    this.setOutput(true, "Number");
+    this.setColour(Blockly.Msg.ARDUINO_DIGITAL_IO_HUE);
+    this.setTooltip(Blockly.Msg.ARDUINO_DIGITAL_READ_TOOLTIP);
+    this.setHelpUrl("https://www.arduino.cc/reference/en/language/functions/digital-io/digitalread/");
   }
 };
 

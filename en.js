@@ -2,6 +2,7 @@
 Blockly.Msg["SIMFONIA_CATEGORY"] = "simfonia";
 Blockly.Msg["PICAR_CATEGORY"] = "πCar";
 Blockly.Msg["ARDUINO_CATEGORY"] = "Arduino";
+Blockly.Msg["CODING_CATEGORY"] = "Coding";
 Blockly.Msg["SIMFONIA_HUE"] = "#5b33a5"; // A nice purple
 Blockly.Msg["ARDUINO_HUE"] = "#4287f5"; // for Arduino
 Blockly.Msg["PICAR_HUE"] = "#ee5b56"; // for piCar movement
@@ -9,7 +10,7 @@ Blockly.Msg["PICAR_SETUP_HUE"] = "#0872e2"; // for initialization
 Blockly.Msg["COLOR_SENSOR_HUE"] = "#b1b100"; // for sensor
 Blockly.Msg["SERVO_HUE"] = "#07a91d"; // for servo
 Blockly.Msg["MEDIA_HUE"] = "#de57ad"; // for multimedia
-Blockly.Msg["ADVANCED_HUE"] = "#556f79"; // for advanced coding
+Blockly.Msg["CODING_HUE"] = "#556f79"; // for coding
 Blockly.Msg["ARDUINO_CONTROL_HUE"] = "#0872e2"; // for Arduino I/O
 Blockly.Msg["ARDUINO_DIGITAL_IO_HUE"] = "#455A64"; // for Arduino Digital I/O
 Blockly.Msg["ARDUINO_ANALOG_IO_HUE"] = "#FF9800"; // for Arduino Analog I/O
@@ -54,22 +55,35 @@ Blockly.Msg["PICAR_COLOR"] = "color to";
 
 Blockly.Msg["PICAR_EASTER_EGG"] = "Play Easter Egg Melody (whole note time in ms)";
 Blockly.Msg["PICAR_EASTER_EGG_TOOLTIP"] = "Plays a melody. The larger the value, the slower it plays.";
-Blockly.Msg["PICAR_RAW_CODE"] = "Raw Code";
-Blockly.Msg["PICAR_RAW_CODE_TOOLTIP"] = "Allows entering any code or comments.";
+Blockly.Msg["CODING_RAW_STATEMENT"] = "Raw Statement";
+Blockly.Msg["CODING_RAW_STATEMENT_TOOLTIP"] = "Allows entering any code as a statement.";
+
+Blockly.Msg["CODING_RAW_INPUT"] = "Raw Input";
+Blockly.Msg["CODING_RAW_INPUT_TOOLTIP"] = "Allows entering code that returns any value (e.g., Number, String, Boolean).";
+
+Blockly.Msg["CODING_RAW_DEFINITION"] = "Raw Definition";
+Blockly.Msg["CODING_RAW_DEFINITION_TOOLTIP"] = "Allows entering global definitions, includes, or custom functions.";
+Blockly.Msg["CODING_RAW_WRAPPER"] = "Raw Wrapper";
+Blockly.Msg["CODING_RAW_WRAPPER_TOOLTIP"] = "Allows wrapping other blocks with custom code (e.g., custom loops or conditionals).";
+Blockly.Msg["CODING_RAW_WRAPPER_TOP"] = "Top Code:";
+Blockly.Msg["CODING_RAW_WRAPPER_BOTTOM"] = "Bottom Code:";
 
 // Arduino Blocks
-Blockly.Msg["ARDUINO_PIN_MODE"] = "pinMode(pin: %1, mode: %2)";
+Blockly.Msg["ARDUINO_PIN_MODE"] = "pinMode";
 Blockly.Msg["ARDUINO_PIN_MODE_TOOLTIP"] = "Configures the specified pin to behave either as an input or an output. See https://www.arduino.cc/reference/en/language/functions/digital-io/pinmode/";
 Blockly.Msg["ARDUINO_PIN_MODE_INPUT"] = "INPUT";
 Blockly.Msg["ARDUINO_PIN_MODE_OUTPUT"] = "OUTPUT";
 Blockly.Msg["ARDUINO_PIN_MODE_INPUT_PULLUP"] = "INPUT_PULLUP";
 
-Blockly.Msg["ARDUINO_DIGITAL_READ"] = "digitalRead(pin: %1)";
+Blockly.Msg["ARDUINO_DIGITAL_READ"] = "digitalRead";
 Blockly.Msg["ARDUINO_DIGITAL_READ_TOOLTIP"] = "Reads the value from a specified digital pin, either HIGH or LOW. See https://www.arduino.cc/reference/en/language/functions/digital-io/digitalread/";
 Blockly.Msg["ARDUINO_DIGITAL_WRITE"] = "digitalWrite(pin: %1, value: %2)";
 Blockly.Msg["ARDUINO_DIGITAL_WRITE_TOOLTIP"] = "Writes a HIGH or LOW value to a digital pin. See https://www.arduino.cc/reference/en/language/functions/digital-io/digitalwrite/";
 Blockly.Msg["ARDUINO_HIGH"] = "HIGH";
 Blockly.Msg["ARDUINO_LOW"] = "LOW";
+
+Blockly.Msg["ARDUINO_PIN_LABEL"] = "Pin:";
+Blockly.Msg["ARDUINO_MODE_LABEL"] = "Mode:";
 
 Blockly.Msg["ARDUINO_ANALOG_READ"] = "analogRead(pin: %1)";
 Blockly.Msg["ARDUINO_ANALOG_READ_TOOLTIP"] = "Reads the value from the specified analog pin. See https://www.arduino.cc/reference/en/language/functions/analog-io/analogread/";

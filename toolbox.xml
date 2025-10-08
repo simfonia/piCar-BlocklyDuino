@@ -1,7 +1,24 @@
 <category id="category_simfonia" name="%{BKY_SIMFONIA_CATEGORY}" colour="%{BKY_SIMFONIA_HUE}">
     <category id="category_arduino" name="%{BKY_ARDUINO_CATEGORY}" colour="%{BKY_ARDUINO_HUE}">
-        <block type="arduino_pin_mode"></block>
-        <block type="arduino_digital_read"></block>
+        <block type="arduino_pin_mode">
+            <value name="PIN">
+                <shadow type="arduino_pin_shadow">
+                    <field name="PIN">0</field>
+                </shadow>
+            </value>
+            <value name="MODE">
+                <shadow type="arduino_pin_mode_mode_shadow"></shadow>
+            </value>
+        </block>
+        <block type="arduino_pin_mode_mode_shadow"></block>
+        <block type="arduino_pin_shadow"></block>
+        <block type="arduino_digital_read">
+            <value name="PIN">
+                <shadow type="arduino_pin_shadow">
+                    <field name="PIN">0</field>
+                </shadow>
+            </value>
+        </block>
         <block type="arduino_digital_write"></block>
         <block type="arduino_analog_read"></block>
                 <block type="arduino_analog_write">
@@ -63,6 +80,11 @@
                 </shadow>
             </value>
         </block>
-        <block type="picar_rawCode"></block>
+    </category>
+    <category id="category_coding" name="%{BKY_CODING_CATEGORY}" colour="%{BKY_CODING_HUE}">
+        <block type="coding_raw_statement"></block>
+        <block type="coding_raw_input"></block>
+        <block type="coding_raw_definition"></block>
+        <block type="coding_raw_wrapper"></block>
     </category>
 </category>

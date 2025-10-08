@@ -338,22 +338,52 @@ Blockly.Arduino['picar_easterEgg'] = function(block) {
 
 
 // 自由寫
-Blockly.Arduino['picar_rawCode'] = function(block) {
+Blockly.Arduino['coding_raw_statement'] = function(block) {
   var code = block.getFieldValue('CODE');
   return code + '\n'; // Output the text as-is, with a newline
 };
 
 
-Blockly.Arduino['arduino_pin_mode'] = function(block) {
-  var pin = block.getFieldValue('PIN');
-  var mode = block.getFieldValue('MODE');
-  var code = 'pinMode(' + pin + ', ' + mode + ');\n';
+Blockly.Arduino['coding_raw_input'] = function(block) {
+  var code = block.getFieldValue('CODE');
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino['coding_raw_definition'] = function(block) {
+  var code = block.getFieldValue('CODE');
+  Blockly.Arduino.definitions_['raw_definition_' + block.id] = code;
+  return '';
+};
+
+Blockly.Arduino['coding_raw_wrapper'] = function(block) {
+  var codeTop = block.getFieldValue('CODE_TOP');
+  var statementsDo = Blockly.Arduino.statementToCode(block, 'DO');
+  var codeBottom = block.getFieldValue('CODE_BOTTOM');
+  var code = codeTop + '\n' + statementsDo + codeBottom + '\n';
   return code;
 };
 
 
-Blockly.Arduino['arduino_digital_read'] = function(block) {
+Blockly.Arduino['arduino_pin_mode'] = function(block) {
+  var pin = Blockly.Arduino.valueToCode(block, 'PIN', Blockly.Arduino.ORDER_ATOMIC) || '0';
+  var mode = Blockly.Arduino.valueToCode(block, 'MODE', Blockly.Arduino.ORDER_ATOMIC) || 'OUTPUT';
+  var code = 'pinMode(' + pin + ', ' + mode + ');\n';
+  return code;
+};
+
+Blockly.Arduino['arduino_pin_mode_mode_shadow'] = function(block) {
+  var mode = block.getFieldValue('MODE');
+  return [mode, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino['arduino_pin_shadow'] = function(block) {
   var pin = block.getFieldValue('PIN');
+  return [pin, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+
+Blockly.Arduino['arduino_digital_read'] = function(block) {
+  var pin = Blockly.Arduino.valueToCode(block, 'PIN', Blockly.Arduino.ORDER_ATOMIC) || '0';
   var code = 'digitalRead(' + pin + ')';
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };

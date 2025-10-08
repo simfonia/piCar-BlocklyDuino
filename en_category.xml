@@ -2,4 +2,5 @@
     <category><name>%{BKY_SIMFONIA_CATEGORY}</name><replace>simfonia</replace></category>
     <category><name>%{BKY_ARDUINO_CATEGORY}</name><replace>Arduino</replace></category>
     <category><name>%{BKY_PICAR_CATEGORY}</name><replace>πCar</replace></category>
+    <category><name>%{BKY_CODING_CATEGORY}</name><replace>Coding</replace></category>
 </xml>
