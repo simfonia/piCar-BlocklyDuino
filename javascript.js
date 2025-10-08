@@ -156,7 +156,44 @@ Blockly.Arduino['picar_init'] = function(block) {
       '  angle = constrain(angle, 0, 180);\n' +
       '  handR.write(angle);\n' +
       '}\n';
-  
+
+      
+  Blockly.Arduino.definitions_['define_moveHandsStateful'] =
+    'int g_s_angle_L = 180;\n' +
+    'int g_s_angle_R = 0;\n\n' +
+    'void moveHandsStateful(int hand_selector, int percent, int speed) {\n' +
+    '  /* hand_selector: 0=LEFT, 1=RIGHT, 2=BOTH */\n\n' +
+    '  percent = constrain(percent, 0, 100);\n' +
+    '  speed = constrain(speed, 1, 10);\n\n' +
+    '  float percentage = percent / 100.0;\n' +
+    '  int target_L = 180 - (percentage * g_hand_range);\n' +
+    '  int target_R = percentage * g_hand_range;\n\n' +
+    '  long step_delay_us = map(speed, 1, 10, 20000, 1000);\n\n' +
+    '  bool move_L = (hand_selector == 0 || hand_selector == 2);\n' +
+    '  bool move_R = (hand_selector == 1 || hand_selector == 2);\n\n' +
+    '  while (true) {\n' +
+    '    bool done_L = true;\n' +
+    '    bool done_R = true;\n\n' +
+    '    if (move_L) {\n' +
+    '      if (g_s_angle_L < target_L) g_s_angle_L++;\n' +
+    '      else if (g_s_angle_L > target_L) g_s_angle_L--;\n' +
+    '      handL.write(g_s_angle_L);\n' +
+    '      if (g_s_angle_L != target_L) done_L = false;\n' +
+    '    }\n\n' +
+    '    if (move_R) {\n' +
+    '      if (g_s_angle_R < target_R) g_s_angle_R++;\n' +
+    '      else if (g_s_angle_R > target_R) g_s_angle_R--;\n' +
+    '      handR.write(g_s_angle_R);\n' +
+    '      if (g_s_angle_R != target_R) done_R = false;\n' +
+    '    }\n\n' +
+    '    if (done_L && done_R) {\n' +
+    '      break;\n' +
+    '    }\n\n' +
+    '    delayMicroseconds(step_delay_us);\n' +
+    '  }\n' +
+    '}\n'; // Global angles for the stateful move block
+
+
   // 燈光閃爍
   Blockly.Arduino.definitions_['define_flashingLight'] =
     'void flashingLight(){\n' +
@@ -302,6 +339,21 @@ Blockly.Arduino['picar_openHands'] = function(block) {
   return 'openHands();\n';
 };
 
+// 萬用手臂控制
+Blockly.Arduino['picar_move_hands'] = function(block) {
+  var hand = block.getFieldValue('HAND');
+  var percent = Blockly.Arduino.valueToCode(block, 'PERCENT', Blockly.Arduino.ORDER_ATOMIC) || '50';
+  var speed = Blockly.Arduino.valueToCode(block, 'SPEED', Blockly.Arduino.ORDER_ATOMIC) || '8';
+  var hand_selector = 2; /* Default to BOTH */
+  if (hand === 'LEFT') {
+    hand_selector = 0;
+  } else if (hand === 'RIGHT') {
+    hand_selector = 1;
+  }
+  var code = 'moveHandsStateful(' + hand_selector + ', ' + percent + ', ' + speed + ');\n';
+  return code;
+};
+
 
 // 設定RGB燈顏色
 Blockly.Arduino['picar_set_led_color'] = function(block) {
@@ -334,6 +386,23 @@ Blockly.Arduino['picar_flashingLight'] = function(block) {
 Blockly.Arduino['picar_easterEgg'] = function(block) {
   var tempo = Blockly.Arduino.valueToCode(block, 'TEMPO', Blockly.Arduino.ORDER_ATOMIC) || '1000';
   return 'easterEgg(' + tempo + ');\n';
+};
+
+
+// 播放音調
+Blockly.Arduino['picar_tone'] = function(block) {
+  var pin = Blockly.Arduino.valueToCode(block, 'PIN', Blockly.Arduino.ORDER_ATOMIC) || '22';
+  var frequency = Blockly.Arduino.valueToCode(block, 'FREQUENCY', Blockly.Arduino.ORDER_ATOMIC) || '440';
+  var duration = Blockly.Arduino.valueToCode(block, 'DURATION', Blockly.Arduino.ORDER_ATOMIC) || '200';
+  var code = 'tone(' + pin + ', ' + frequency + ', ' + duration + ');\n';
+  return code;
+};
+
+// 停止音調
+Blockly.Arduino['picar_no_tone'] = function(block) {
+  var pin = Blockly.Arduino.valueToCode(block, 'PIN', Blockly.Arduino.ORDER_ATOMIC) || '22';
+  var code = 'noTone(' + pin + ');\n';
+  return code;
 };
 
 

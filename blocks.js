@@ -191,6 +191,49 @@ Blockly.Blocks['picar_openHands'] = {
   }
 };
 
+Blockly.Blocks['picar_move_hands'] = {
+  init: function() {
+    this.jsonInit({
+      "message0": Blockly.Msg.PICAR_MOVE_HANDS,
+      "args0": [
+        {
+          "type": "field_dropdown",
+          "name": "HAND",
+          "options": [
+            [Blockly.Msg.PICAR_HAND_BOTH, "BOTH"],
+            [Blockly.Msg.PICAR_HAND_LEFT, "LEFT"],
+            [Blockly.Msg.PICAR_HAND_RIGHT, "RIGHT"]
+          ]
+        },
+        {
+          "type": "input_value",
+          "name": "PERCENT",
+          "check": "Number",
+          "shadow": {
+            "type": "math_number",
+            "fields": { "NUM": 50 }
+          }
+        },
+        {
+          "type": "input_value",
+          "name": "SPEED",
+          "check": "Number",
+          "shadow": {
+            "type": "math_number",
+            "fields": { "NUM": 8 }
+          }
+        }
+      ],
+      "inputsInline": true,
+      "previousStatement": true,
+      "nextStatement": true,
+      "colour": Blockly.Msg.SERVO_HUE,
+      "tooltip": Blockly.Msg.PICAR_MOVE_HANDS_TOOLTIP,
+      "helpUrl": ""
+    });
+  }
+};
+
 Blockly.Blocks['picar_set_led_color'] = {
   init: function() {
     this.appendDummyInput()
@@ -234,6 +277,74 @@ Blockly.Blocks['picar_easterEgg'] = {
     this.setColour(Blockly.Msg["MEDIA_HUE"]);
     this.setTooltip(Blockly.Msg["PICAR_EASTER_EGG_TOOLTIP"]);
     this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['picar_tone'] = {
+  init: function() {
+    this.jsonInit({
+      "message0": Blockly.Msg.PICAR_TONE,
+      "args0": [
+        {
+          "type": "input_value",
+          "name": "PIN",
+          "check": "Number",
+          "shadow": {
+            "type": "math_number",
+            "fields": { "NUM": 22 }
+          }
+        },
+        {
+          "type": "input_value",
+          "name": "FREQUENCY",
+          "check": "Number",
+          "shadow": {
+            "type": "math_number",
+            "fields": { "NUM": 440 }
+          }
+        },
+        {
+          "type": "input_value",
+          "name": "DURATION",
+          "check": "Number",
+          "shadow": {
+            "type": "math_number",
+            "fields": { "NUM": 200 }
+          }
+        }
+      ],
+      "inputsInline": true,
+      "previousStatement": true,
+      "nextStatement": true,
+      "colour": Blockly.Msg.MEDIA_HUE,
+      "tooltip": Blockly.Msg.PICAR_TONE_TOOLTIP,
+      "helpUrl": "https://www.arduino.cc/reference/en/language/functions/advanced-io/tone/"
+    });
+  }
+};
+
+Blockly.Blocks['picar_no_tone'] = {
+  init: function() {
+    this.jsonInit({
+      "message0": Blockly.Msg.PICAR_NO_TONE,
+      "args0": [
+        {
+          "type": "input_value",
+          "name": "PIN",
+          "check": "Number",
+          "shadow": {
+            "type": "math_number",
+            "fields": { "NUM": 22 }
+          }
+        }
+      ],
+      "inputsInline": true,
+      "previousStatement": true,
+      "nextStatement": true,
+      "colour": Blockly.Msg.MEDIA_HUE,
+      "tooltip": Blockly.Msg.PICAR_NO_TONE_TOOLTIP,
+      "helpUrl": "https://www.arduino.cc/reference/en/language/functions/advanced-io/notone/"
+    });
   }
 };
 

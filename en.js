@@ -47,6 +47,15 @@ Blockly.Msg["PICAR_CLOSE_HANDS"] = "Close Hands";
 Blockly.Msg["PICAR_CLOSE_HANDS_TOOLTIP"] = "Closes the hands.";
 Blockly.Msg["PICAR_OPEN_HANDS"] = "Open Hands";
 Blockly.Msg["PICAR_OPEN_HANDS_TOOLTIP"] = "Opens the hands.";
+
+Blockly.Msg["PICAR_MOVE_HANDS"] = "Move %1 to %2 %% open at speed %3";
+Blockly.Msg["PICAR_HAND_LEFT"] = "Left Hand";
+Blockly.Msg["PICAR_HAND_RIGHT"] = "Right Hand";
+Blockly.Msg["PICAR_HAND_BOTH"] = "Both Hands";
+Blockly.Msg["PICAR_MOVE_HANDS_TOOLTIP"] = "Controls one or both hands to a specific opening percentage with speed control. " +
+  "This is a blocking function; it will wait for the action to complete. " +
+  "For asynchronous behavior, place it in a separate loop/core (e.g., loop1)."
+
 Blockly.Msg["PICAR_FLASHING_LIGHT"] = "Flash RGB Light";
 Blockly.Msg["PICAR_FLASHING_LIGHT_TOOLTIP"] = "Flashes the RGB light.";
 
@@ -59,6 +68,12 @@ Blockly.Msg["PICAR_COLOR"] = "color to";
 
 Blockly.Msg["PICAR_EASTER_EGG"] = "Play Easter Egg Melody (whole note time in ms)";
 Blockly.Msg["PICAR_EASTER_EGG_TOOLTIP"] = "Plays a melody. The larger the value, the slower it plays.";
+
+Blockly.Msg["PICAR_TONE"] = "Play tone on pin %1 with frequency %2 for duration (ms) %3 (non-blocking)";
+Blockly.Msg["PICAR_TONE_TOOLTIP"] = "Generates a tone on the specified pin. The default buzzer is on pin 22.";
+Blockly.Msg["PICAR_NO_TONE"] = "Stop tone on pin %1";
+Blockly.Msg["PICAR_NO_TONE_TOOLTIP"] = "Stops the tone playing on the specified pin. The default buzzer is on pin 22.";
+
 Blockly.Msg["CODING_RAW_STATEMENT"] = "Raw Statement";
 Blockly.Msg["CODING_RAW_STATEMENT_TOOLTIP"] = "Allows entering any code as a statement.";
 

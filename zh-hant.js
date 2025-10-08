@@ -47,6 +47,13 @@ Blockly.Msg["PICAR_CLOSE_HANDS"] = "手臂合起";
 Blockly.Msg["PICAR_CLOSE_HANDS_TOOLTIP"] = "手臂合起";
 Blockly.Msg["PICAR_OPEN_HANDS"] = "手臂張開";
 Blockly.Msg["PICAR_OPEN_HANDS_TOOLTIP"] = "手臂張開";
+
+Blockly.Msg["PICAR_MOVE_HANDS"] = "移動 %1 到 %2 % 開合，速度為 %3";
+Blockly.Msg["PICAR_HAND_LEFT"] = "左手";
+Blockly.Msg["PICAR_HAND_RIGHT"] = "右手";
+Blockly.Msg["PICAR_HAND_BOTH"] = "雙手";
+Blockly.Msg["PICAR_MOVE_HANDS_TOOLTIP"] = "以指定速度控制單手或雙手移動到特定開合度。此積木會等待動作完成(阻塞式)，建議放在 loop1 中執行以達成非同步效果。";
+
 Blockly.Msg["PICAR_FLASHING_LIGHT"] = "閃爍 RGB 燈";
 Blockly.Msg["PICAR_FLASHING_LIGHT_TOOLTIP"] = "閃爍 RGB 燈";
 
@@ -59,6 +66,12 @@ Blockly.Msg["PICAR_COLOR"] = "顏色為";
 
 Blockly.Msg["PICAR_EASTER_EGG"] = "播放彩蛋旋律 全音符的時間 (ms)";
 Blockly.Msg["PICAR_EASTER_EGG_TOOLTIP"] = "播放一段旋律，數值愈大愈慢";
+
+Blockly.Msg["PICAR_TONE"] = "在腳位 %1 上播放音調，頻率 %2，持續時間 (ms) %3 (不等待播完)";
+Blockly.Msg["PICAR_TONE_TOOLTIP"] = "在指定腳位上產生音調。預設蜂鳴器位於腳位 22。";
+Blockly.Msg["PICAR_NO_TONE"] = "停止在腳位 %1 上的音調";
+Blockly.Msg["PICAR_NO_TONE_TOOLTIP"] = "停止在指定腳位上播放的音調。預設蜂鳴器位於腳位 22。";
+
 Blockly.Msg["CODING_RAW_STATEMENT"] = "自由寫 (指令)";
 Blockly.Msg["CODING_RAW_STATEMENT_TOOLTIP"] = "可填入任意程式碼作為一個指令";
 

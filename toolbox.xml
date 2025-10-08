@@ -132,12 +132,48 @@
         </block>
         <block type="picar_closeHands"></block>
         <block type="picar_openHands"></block>
+        <block type="picar_move_hands">
+            <value name="PERCENT">
+                <shadow type="math_number">
+                    <field name="NUM">50</field>
+                </shadow>
+            </value>
+            <value name="SPEED">
+                <shadow type="math_number">
+                    <field name="NUM">8</field>
+                </shadow>
+            </value>
+        </block>
         <block type="picar_set_led_color"></block>
         <block type="picar_flashingLight"></block>
         <block type="picar_easterEgg">
             <value name="TEMPO">
                 <shadow type="math_number">
                     <field name="NUM">1000</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="picar_tone">
+            <value name="PIN">
+                <shadow type="math_number">
+                    <field name="NUM">22</field>
+                </shadow>
+            </value>
+            <value name="FREQUENCY">
+                <shadow type="math_number">
+                    <field name="NUM">440</field>
+                </shadow>
+            </value>
+            <value name="DURATION">
+                <shadow type="math_number">
+                    <field name="NUM">200</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="picar_no_tone">
+            <value name="PIN">
+                <shadow type="math_number">
+                    <field name="NUM">22</field>
                 </shadow>
             </value>
         </block>
