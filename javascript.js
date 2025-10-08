@@ -389,7 +389,7 @@ Blockly.Arduino['arduino_digital_read'] = function(block) {
 };
 
 Blockly.Arduino['arduino_digital_write'] = function(block) {
-  var pin = block.getFieldValue('PIN');
+  var pin = Blockly.Arduino.valueToCode(block, 'PIN', Blockly.Arduino.ORDER_ATOMIC) || '0';
   var value = block.getFieldValue('VALUE');
   var code = 'digitalWrite(' + pin + ', ' + value + ');\n';
   return code;
@@ -397,14 +397,32 @@ Blockly.Arduino['arduino_digital_write'] = function(block) {
 
 
 Blockly.Arduino['arduino_analog_read'] = function(block) {
-  var pin = block.getFieldValue('PIN');
+  var pin = Blockly.Arduino.valueToCode(block, 'PIN', Blockly.Arduino.ORDER_ATOMIC) || 'A0';
   var code = 'analogRead(' + pin + ')';
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
 Blockly.Arduino['arduino_analog_write'] = function(block) {
-  var pin = block.getFieldValue('PIN');
+  var pin = Blockly.Arduino.valueToCode(block, 'PIN', Blockly.Arduino.ORDER_ATOMIC) || '3';
   var value = Blockly.Arduino.valueToCode(block, 'VALUE', Blockly.Arduino.ORDER_ATOMIC) || '0';
   var code = 'analogWrite(' + pin + ', ' + value + ');\n';
   return code;
+};
+
+Blockly.Arduino['arduino_constrain'] = function(block) {
+  var value = Blockly.Arduino.valueToCode(block, 'VALUE', Blockly.Arduino.ORDER_ATOMIC) || '0';
+  var low = Blockly.Arduino.valueToCode(block, 'LOW', Blockly.Arduino.ORDER_ATOMIC) || '0';
+  var high = Blockly.Arduino.valueToCode(block, 'HIGH', Blockly.Arduino.ORDER_ATOMIC) || '0';
+  var code = 'constrain(' + value + ', ' + low + ', ' + high + ')';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino['arduino_map'] = function(block) {
+  var value = Blockly.Arduino.valueToCode(block, 'VALUE', Blockly.Arduino.ORDER_ATOMIC) || '0';
+  var fromLow = Blockly.Arduino.valueToCode(block, 'FROMLOW', Blockly.Arduino.ORDER_ATOMIC) || '0';
+  var fromHigh = Blockly.Arduino.valueToCode(block, 'FROMHIGH', Blockly.Arduino.ORDER_ATOMIC) || '0';
+  var toLow = Blockly.Arduino.valueToCode(block, 'TOLOW', Blockly.Arduino.ORDER_ATOMIC) || '0';
+  var toHigh = Blockly.Arduino.valueToCode(block, 'TOHIGH', Blockly.Arduino.ORDER_ATOMIC) || '0';
+  var code = 'map(' + value + ', ' + fromLow + ', ' + fromHigh + ', ' + toLow + ', ' + toHigh + ')';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
 };

@@ -377,9 +377,9 @@ Blockly.Blocks['arduino_digital_write'] = {
       "message0": Blockly.Msg.ARDUINO_DIGITAL_WRITE,
       "args0": [
         {
-          "type": "field_input",
+          "type": "input_value",
           "name": "PIN",
-          "text": "0"
+          "check": ["Number", "String"]
         },
         {
           "type": "field_dropdown",
@@ -407,9 +407,9 @@ Blockly.Blocks['arduino_analog_read'] = {
       "message0": Blockly.Msg.ARDUINO_ANALOG_READ,
       "args0": [
         {
-          "type": "field_input",
+          "type": "input_value",
           "name": "PIN",
-          "text": "A0" // Default to analog pin
+          "check": ["Number", "String"]
         }
       ],
       "inputsInline": true,
@@ -427,9 +427,9 @@ Blockly.Blocks['arduino_analog_write'] = {
       "message0": Blockly.Msg.ARDUINO_ANALOG_WRITE,
       "args0": [
         {
-          "type": "field_input",
+          "type": "input_value",
           "name": "PIN",
-          "text": "3" // Default to a common PWM pin
+          "check": ["Number", "String"]
         },
         {
           "type": "input_value",
@@ -444,6 +444,50 @@ Blockly.Blocks['arduino_analog_write'] = {
       "tooltip": Blockly.Msg.ARDUINO_ANALOG_WRITE_TOOLTIP,
       "helpUrl": "https://www.arduino.cc/reference/en/language/functions/analog-io/analogwrite/"
     });
+  }
+};
+
+Blockly.Blocks['arduino_constrain'] = {
+  init: function() {
+    this.appendValueInput("VALUE")
+        .setCheck(["Number", "String"])
+        .appendField(Blockly.Msg.ARDUINO_CONSTRAIN_VALUE);
+    this.appendValueInput("LOW")
+        .setCheck("Number")
+        .appendField(Blockly.Msg.ARDUINO_CONSTRAIN_LOW);
+    this.appendValueInput("HIGH")
+        .setCheck("Number")
+        .appendField(Blockly.Msg.ARDUINO_CONSTRAIN_HIGH);
+    this.setInputsInline(true);
+    this.setOutput(true, "Number");
+    this.setColour(Blockly.Msg.ARDUINO_MATH_HUE);
+    this.setTooltip(Blockly.Msg.ARDUINO_CONSTRAIN_TOOLTIP);
+    this.setHelpUrl("https://www.arduino.cc/reference/en/language/functions/math/constrain/");
+  }
+};
+
+Blockly.Blocks['arduino_map'] = {
+  init: function() {
+    this.appendValueInput("VALUE")
+        .setCheck(["Number", "String"])
+        .appendField(Blockly.Msg.ARDUINO_MAP_VALUE);
+    this.appendValueInput("FROMLOW")
+        .setCheck("Number")
+        .appendField(Blockly.Msg.ARDUINO_MAP_FROMLOW);
+    this.appendValueInput("FROMHIGH")
+        .setCheck("Number")
+        .appendField(Blockly.Msg.ARDUINO_MAP_FROMHIGH);
+    this.appendValueInput("TOLOW")
+        .setCheck("Number")
+        .appendField(Blockly.Msg.ARDUINO_MAP_TOLOW);
+    this.appendValueInput("TOHIGH")
+        .setCheck("Number")
+        .appendField(Blockly.Msg.ARDUINO_MAP_TOHIGH);
+    this.setInputsInline(true);
+    this.setOutput(true, "Number");
+    this.setColour(Blockly.Msg.ARDUINO_MATH_HUE);
+    this.setTooltip(Blockly.Msg.ARDUINO_MAP_TOOLTIP);
+    this.setHelpUrl("https://www.arduino.cc/reference/en/language/functions/math/map/");
   }
 };
 

@@ -4,16 +4,20 @@ Blockly.Msg["PICAR_CATEGORY"] = "πCar";
 Blockly.Msg["ARDUINO_CATEGORY"] = "Arduino";
 Blockly.Msg["CODING_CATEGORY"] = "Coding";
 Blockly.Msg["SIMFONIA_HUE"] = "#5b33a5"; // A nice purple
-Blockly.Msg["ARDUINO_HUE"] = "#4287f5"; // for Arduino
 Blockly.Msg["PICAR_HUE"] = "#ee5b56"; // for piCar movement
-Blockly.Msg["PICAR_SETUP_HUE"] = "#0872e2"; // for initialization
+Blockly.Msg["PICAR_SETUP_HUE"] = "#016c8d"; // for initialization
 Blockly.Msg["COLOR_SENSOR_HUE"] = "#b1b100"; // for sensor
 Blockly.Msg["SERVO_HUE"] = "#07a91d"; // for servo
 Blockly.Msg["MEDIA_HUE"] = "#de57ad"; // for multimedia
-Blockly.Msg["CODING_HUE"] = "#556f79"; // for coding
-Blockly.Msg["ARDUINO_CONTROL_HUE"] = "#0872e2"; // for Arduino I/O
-Blockly.Msg["ARDUINO_DIGITAL_IO_HUE"] = "#455A64"; // for Arduino Digital I/O
+
+Blockly.Msg["ARDUINO_MATH_HUE"] = "#b13333"; // for Arduino math blocks (red-ish)
+
+Blockly.Msg["ARDUINO_HUE"] = "#016c8d"; // for Arduino
+Blockly.Msg["ARDUINO_CONTROL_HUE"] = "#016c8d"; // for Arduino I/O
+Blockly.Msg["ARDUINO_DIGITAL_IO_HUE"] = "#0f960a"; // for Arduino Digital I/O
 Blockly.Msg["ARDUINO_ANALOG_IO_HUE"] = "#FF9800"; // for Arduino Analog I/O
+
+Blockly.Msg["CODING_HUE"] = "#585858"; // for coding
 
 // Block Keys
 Blockly.Msg["PICAR_INIT"] = "初始化 piCar";
@@ -82,12 +86,24 @@ Blockly.Msg["ARDUINO_PIN_MODE_INPUT_PULLUP"] = "INPUT_PULLUP";
 
 Blockly.Msg["ARDUINO_DIGITAL_READ"] = "digitalRead";
 Blockly.Msg["ARDUINO_DIGITAL_READ_TOOLTIP"] = "讀取指定數位腳位的狀態，HIGH 或 LOW。詳細資訊請見 https://www.arduino.cc/reference/en/language/functions/digital-io/digitalread/";
-Blockly.Msg["ARDUINO_DIGITAL_WRITE"] = "digitalWrite(腳位: %1, 值: %2)";
+Blockly.Msg["ARDUINO_DIGITAL_WRITE"] = "digitalWrite(%1, 值: %2)";
 Blockly.Msg["ARDUINO_DIGITAL_WRITE_TOOLTIP"] = "將 HIGH 或 LOW 值寫入數位腳位。詳細資訊請見 https://www.arduino.cc/reference/en/language/functions/digital-io/digitalwrite/";
 Blockly.Msg["ARDUINO_HIGH"] = "HIGH";
 Blockly.Msg["ARDUINO_LOW"] = "LOW";
 
-Blockly.Msg["ARDUINO_ANALOG_READ"] = "analogRead(腳位: %1)";
+Blockly.Msg["ARDUINO_ANALOG_READ"] = "analogRead(%1)";
 Blockly.Msg["ARDUINO_ANALOG_READ_TOOLTIP"] = "讀取指定類比腳位的狀態。詳細資訊請見 https://www.arduino.cc/reference/en/language/functions/analog-io/analogread/";
-Blockly.Msg["ARDUINO_ANALOG_WRITE"] = "analogWrite(腳位: %1, 值: %2)";
-Blockly.Msg["ARDUINO_ANALOG_WRITE_TOOLTIP"] = "將類比值 (PWM 波) 寫入腳位。詳細資訊請見 https://www.arduino.cc/reference/en/language/functions/analog-io/analogwrite/";
+Blockly.Msg["ARDUINO_ANALOG_WRITE"] = "analogWrite(%1, 值: %2)";
+Blockly.Msg["ARDUINO_ANALOG_WRITE_TOOLTIP"] = "將類比值 (PWM) 寫入腳位。詳細資訊請見 https://www.arduino.cc/reference/en/language/functions/analog-io/analogwrite/";
+
+Blockly.Msg["ARDUINO_CONSTRAIN_VALUE"] = "限制";
+Blockly.Msg["ARDUINO_CONSTRAIN_LOW"] = "介於";
+Blockly.Msg["ARDUINO_CONSTRAIN_HIGH"] = "與";
+Blockly.Msg["ARDUINO_CONSTRAIN_TOOLTIP"] = "將數字限制在指定範圍內。詳細資訊請見 https://www.arduino.cc/reference/en/language/functions/math/constrain/";
+
+Blockly.Msg["ARDUINO_MAP_VALUE"] = "映射";
+Blockly.Msg["ARDUINO_MAP_FROMLOW"] = "從下限";
+Blockly.Msg["ARDUINO_MAP_FROMHIGH"] = "上限";
+Blockly.Msg["ARDUINO_MAP_TOLOW"] = "到下限";
+Blockly.Msg["ARDUINO_MAP_TOHIGH"] = "上限";
+Blockly.Msg["ARDUINO_MAP_TOOLTIP"] = "將數字從一個範圍重新映射到另一個範圍。詳細資訊請見 https://www.arduino.cc/reference/en/language/functions/math/map/";
