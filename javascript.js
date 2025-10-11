@@ -9,7 +9,10 @@ Blockly.Arduino['picar_init'] = function(block) {
     '#include <Adafruit_NeoPixel.h>  // for RGB LED, install Adafruit NeoPixel lib first\n';
   
   // 全域變數
-  Blockly.Arduino.definitions_['define_g_hand_range'] = 'int g_hand_range = 170;  // 手臂開合角度最大範圍'; // Default value
+  Blockly.Arduino.definitions_['define_g_hand_range'] = 'int g_hand_range = 170;  // 手臂開合角度最大範圍，最大180。'; // Default value
+  Blockly.Arduino.definitions_['define_g_s_angle_L'] = 'int g_s_angle_L = 180;  // 左手目前角度，最大180。'; // Initial value
+  Blockly.Arduino.definitions_['define_g_s_angle_R'] = 'int g_s_angle_R = 0;  // 右手目前角度，最大180。'; // Initial value
+
 
   // 腳位定義
   Blockly.Arduino.definitions_['define_picar_pins'] =
@@ -113,6 +116,17 @@ Blockly.Arduino['picar_init'] = function(block) {
     '  return !IR_D;  // Invert, 0:black  1:white\n' +
     '}\n';
 
+  // 紅外線反射(類比)
+  Blockly.Arduino.definitions_['define_checkGray'] =
+    'int checkGray() {  // detection grayscale\n' +
+    '  // Use analog signals from infrared reflective sensor to detect grayscale.\n' +
+    '  // Returns a value between 0 and 1023.\n' +
+    '  int IR_A = analogRead(pinIR_A);\n' +
+    '  delay(1);  // Pause to prevent noise caused by frequent reads.\n' +
+    '  return (1023 - IR_A);  // Invert, 0:black  1023:white \n' +
+    '}\n';
+
+
   // 手臂初始位置
   Blockly.Arduino.definitions_['define_inPosition'] =
     'void inPosition(){  // Servo motor initial positioning\n' +
@@ -159,8 +173,6 @@ Blockly.Arduino['picar_init'] = function(block) {
 
       
   Blockly.Arduino.definitions_['define_moveHandsStateful'] =
-    'int g_s_angle_L = 180;\n' +
-    'int g_s_angle_R = 0;\n\n' +
     'void moveHandsStateful(int hand_selector, int percent, int speed) {\n' +
     '  /* hand_selector: 0=LEFT, 1=RIGHT, 2=BOTH */\n\n' +
     '  percent = constrain(percent, 0, 100);\n' +
@@ -191,6 +203,7 @@ Blockly.Arduino['picar_init'] = function(block) {
     '    }\n\n' +
     '    delayMicroseconds(step_delay_us);\n' +
     '  }\n' +
+    '  delay(500);\n' +
     '}\n'; // Global angles for the stateful move block
 
 
@@ -307,6 +320,13 @@ Blockly.Arduino['picar_checkDistance'] = function(block) {
 // 紅外線反射(數位)
 Blockly.Arduino['picar_checkColor'] = function(block) {
   var code = 'checkColor()';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+
+// 紅外線反射(類比)
+Blockly.Arduino['picar_checkGray'] = function(block) {
+  var code = 'checkGray()';
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 

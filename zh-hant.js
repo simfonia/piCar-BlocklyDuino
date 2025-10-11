@@ -1,25 +1,64 @@
 // Traditional Chinese language file
+// Category Keys
 Blockly.Msg["SIMFONIA_CATEGORY"] = "simfonia";
 Blockly.Msg["PICAR_CATEGORY"] = "πCar";
 Blockly.Msg["ARDUINO_CATEGORY"] = "Arduino";
 Blockly.Msg["CODING_CATEGORY"] = "Coding";
-Blockly.Msg["SIMFONIA_HUE"] = "#5b33a5"; // A nice purple
-Blockly.Msg["PICAR_HUE"] = "#ee5b56"; // for piCar movement
-Blockly.Msg["PICAR_SETUP_HUE"] = "#016c8d"; // for initialization
-Blockly.Msg["COLOR_SENSOR_HUE"] = "#b1b100"; // for sensor
-Blockly.Msg["SERVO_HUE"] = "#07a91d"; // for servo
-Blockly.Msg["MEDIA_HUE"] = "#de57ad"; // for multimedia
 
-Blockly.Msg["ARDUINO_MATH_HUE"] = "#b13333"; // for Arduino math blocks (red-ish)
+// simfonia Blocks
+Blockly.Msg["SIMFONIA_HUE"] = "#5b33a5"; // for simfonia
 
+
+// Arduino Blocks
 Blockly.Msg["ARDUINO_HUE"] = "#016c8d"; // for Arduino
 Blockly.Msg["ARDUINO_CONTROL_HUE"] = "#016c8d"; // for Arduino I/O
 Blockly.Msg["ARDUINO_DIGITAL_IO_HUE"] = "#0f960a"; // for Arduino Digital I/O
 Blockly.Msg["ARDUINO_ANALOG_IO_HUE"] = "#FF9800"; // for Arduino Analog I/O
+Blockly.Msg["ARDUINO_MATH_HUE"] = "#b13333"; // for Arduino math blocks (red-ish)
 
-Blockly.Msg["CODING_HUE"] = "#585858"; // for coding
 
-// Block Keys
+Blockly.Msg["ARDUINO_PIN_LABEL"] = "pin:";
+Blockly.Msg["ARDUINO_MODE_LABEL"] = "mode:";
+
+Blockly.Msg["ARDUINO_PIN_MODE"] = "pinMode";
+Blockly.Msg["ARDUINO_PIN_MODE_TOOLTIP"] = "將指定的腳位設定為輸入或輸出模式。";
+Blockly.Msg["ARDUINO_PIN_MODE_INPUT"] = "INPUT";
+Blockly.Msg["ARDUINO_PIN_MODE_OUTPUT"] = "OUTPUT";
+Blockly.Msg["ARDUINO_PIN_MODE_INPUT_PULLUP"] = "INPUT_PULLUP";
+
+Blockly.Msg["ARDUINO_DIGITAL_READ"] = "digitalRead";
+Blockly.Msg["ARDUINO_DIGITAL_READ_TOOLTIP"] = "讀入指定數位腳位的狀態，HIGH 或 LOW。";
+Blockly.Msg["ARDUINO_DIGITAL_WRITE"] = "digitalWrite(%1, 值: %2)";
+Blockly.Msg["ARDUINO_DIGITAL_WRITE_TOOLTIP"] = "將 HIGH 或 LOW 值寫出數位腳位。";
+Blockly.Msg["ARDUINO_HIGH"] = "HIGH";
+Blockly.Msg["ARDUINO_LOW"] = "LOW";
+
+Blockly.Msg["ARDUINO_ANALOG_READ"] = "analogRead(%1)";
+Blockly.Msg["ARDUINO_ANALOG_READ_TOOLTIP"] = "讀入指定類比腳位(analog in / ADC)的狀態(0-1023 for 10-bit)。";
+Blockly.Msg["ARDUINO_ANALOG_WRITE"] = "analogWrite(%1, 值: %2)";
+Blockly.Msg["ARDUINO_ANALOG_WRITE_TOOLTIP"] = "將類比值 (PWM, 0-255 for 8-bit) 寫出腳位(~)。";
+
+Blockly.Msg["ARDUINO_CONSTRAIN_VALUE"] = "constrain ";
+Blockly.Msg["ARDUINO_CONSTRAIN_LOW"] = "介於";
+Blockly.Msg["ARDUINO_CONSTRAIN_HIGH"] = "與";
+Blockly.Msg["ARDUINO_CONSTRAIN_TOOLTIP"] = "將數字限制在指定範圍內。";
+
+Blockly.Msg["ARDUINO_MAP_VALUE"] = "map ";
+Blockly.Msg["ARDUINO_MAP_FROMLOW"] = "從下限";
+Blockly.Msg["ARDUINO_MAP_FROMHIGH"] = "上限";
+Blockly.Msg["ARDUINO_MAP_TOLOW"] = "到下限";
+Blockly.Msg["ARDUINO_MAP_TOHIGH"] = "上限";
+Blockly.Msg["ARDUINO_MAP_TOOLTIP"] = "將數字從一個範圍重新映射到另一個範圍。";
+
+
+// piCar Blocks
+Blockly.Msg["PICAR_HUE"] = "#ee5b56"; // for piCar movement
+Blockly.Msg["PICAR_SETUP_HUE"] = "#016c8d"; // for initialization
+Blockly.Msg["PICAR_SENSOR_HUE"] = "#b1b100"; // for sensor
+Blockly.Msg["PICAR_SERVO_HUE"] = "#07a91d"; // for servo
+Blockly.Msg["PICAR_MEDIA_HUE"] = "#de57ad"; // for multimedia
+
+
 Blockly.Msg["PICAR_INIT"] = "初始化 piCar";
 Blockly.Msg["PICAR_INIT_TOOLTIP"] = "初始化 piCar 所需的腳位與變數";
 Blockly.Msg["PICAR_SET_HAND_RANGE"] = "設定手臂開合範圍(0~180)";
@@ -37,6 +76,8 @@ Blockly.Msg["PICAR_CHECK_DISTANCE"] = "偵測距離 (cm)";
 Blockly.Msg["PICAR_CHECK_DISTANCE_TOOLTIP"] = "使用超音波偵測前方障礙物距離 (cm)";
 Blockly.Msg["PICAR_CHECK_COLOR"] = "偵測顏色 (黑0/白1)";
 Blockly.Msg["PICAR_CHECK_COLOR_TOOLTIP"] = "使用紅外線偵測地面顏色，回傳 0 為黑色，1 為白色";
+Blockly.Msg["PICAR_CHECK_GRAY"] = "偵測灰階 (0~1023，愈小愈黑)";
+Blockly.Msg["PICAR_CHECK_GRAY_TOOLTIP"] = "使用紅外線偵測地面灰階值，回傳 0~1023 之間的數值，愈小愈黑。";
 Blockly.Msg["PICAR_IN_POSITION"] = "手臂歸位";
 Blockly.Msg["PICAR_IN_POSITION_TOOLTIP"] = "手臂伺服馬達歸位";
 Blockly.Msg["PICAR_SET_LEFT_HAND_ANGLE"] = "設定左手角度為(180->0 順時針)";
@@ -48,7 +89,7 @@ Blockly.Msg["PICAR_CLOSE_HANDS_TOOLTIP"] = "手臂合起";
 Blockly.Msg["PICAR_OPEN_HANDS"] = "手臂張開";
 Blockly.Msg["PICAR_OPEN_HANDS_TOOLTIP"] = "手臂張開";
 
-Blockly.Msg["PICAR_MOVE_HANDS"] = "移動 %1 到 %2 % 開合，速度為 %3";
+Blockly.Msg["PICAR_MOVE_HANDS"] = "移動 %1 到 %2 % 開合，速度為 %3 (1-10)";
 Blockly.Msg["PICAR_HAND_LEFT"] = "左手";
 Blockly.Msg["PICAR_HAND_RIGHT"] = "右手";
 Blockly.Msg["PICAR_HAND_BOTH"] = "雙手";
@@ -72,6 +113,12 @@ Blockly.Msg["PICAR_TONE_TOOLTIP"] = "在指定腳位上產生音調。預設蜂�
 Blockly.Msg["PICAR_NO_TONE"] = "停止在腳位 %1 上的音調";
 Blockly.Msg["PICAR_NO_TONE_TOOLTIP"] = "停止在指定腳位上播放的音調。預設蜂鳴器位於腳位 22。";
 
+
+
+
+// Coding Blocks
+Blockly.Msg["CODING_HUE"] = "#585858"; // for coding
+
 Blockly.Msg["CODING_RAW_STATEMENT"] = "自由寫 (指令)";
 Blockly.Msg["CODING_RAW_STATEMENT_TOOLTIP"] = "可填入任意程式碼作為一個指令";
 
@@ -85,38 +132,3 @@ Blockly.Msg["CODING_RAW_WRAPPER_TOOLTIP"] = "可使用自訂程式碼包覆其�
 Blockly.Msg["CODING_RAW_WRAPPER_TOP"] = "上方程式碼：";
 Blockly.Msg["CODING_RAW_WRAPPER_BOTTOM"] = "下方程式碼：";
 
-// Arduino Blocks
-Blockly.Msg["ARDUINO_LOW"] = "LOW";
-
-Blockly.Msg["ARDUINO_PIN_LABEL"] = "腳位:";
-Blockly.Msg["ARDUINO_MODE_LABEL"] = "模式:";
-
-Blockly.Msg["ARDUINO_PIN_MODE"] = "pinMode";
-Blockly.Msg["ARDUINO_PIN_MODE_TOOLTIP"] = "將指定的腳位設定為輸入或輸出。詳細資訊請見 https://www.arduino.cc/reference/en/language/functions/digital-io/pinmode/";
-Blockly.Msg["ARDUINO_PIN_MODE_INPUT"] = "INPUT";
-Blockly.Msg["ARDUINO_PIN_MODE_OUTPUT"] = "OUTPUT";
-Blockly.Msg["ARDUINO_PIN_MODE_INPUT_PULLUP"] = "INPUT_PULLUP";
-
-Blockly.Msg["ARDUINO_DIGITAL_READ"] = "digitalRead";
-Blockly.Msg["ARDUINO_DIGITAL_READ_TOOLTIP"] = "讀取指定數位腳位的狀態，HIGH 或 LOW。詳細資訊請見 https://www.arduino.cc/reference/en/language/functions/digital-io/digitalread/";
-Blockly.Msg["ARDUINO_DIGITAL_WRITE"] = "digitalWrite(%1, 值: %2)";
-Blockly.Msg["ARDUINO_DIGITAL_WRITE_TOOLTIP"] = "將 HIGH 或 LOW 值寫入數位腳位。詳細資訊請見 https://www.arduino.cc/reference/en/language/functions/digital-io/digitalwrite/";
-Blockly.Msg["ARDUINO_HIGH"] = "HIGH";
-Blockly.Msg["ARDUINO_LOW"] = "LOW";
-
-Blockly.Msg["ARDUINO_ANALOG_READ"] = "analogRead(%1)";
-Blockly.Msg["ARDUINO_ANALOG_READ_TOOLTIP"] = "讀取指定類比腳位的狀態。詳細資訊請見 https://www.arduino.cc/reference/en/language/functions/analog-io/analogread/";
-Blockly.Msg["ARDUINO_ANALOG_WRITE"] = "analogWrite(%1, 值: %2)";
-Blockly.Msg["ARDUINO_ANALOG_WRITE_TOOLTIP"] = "將類比值 (PWM) 寫入腳位。詳細資訊請見 https://www.arduino.cc/reference/en/language/functions/analog-io/analogwrite/";
-
-Blockly.Msg["ARDUINO_CONSTRAIN_VALUE"] = "限制";
-Blockly.Msg["ARDUINO_CONSTRAIN_LOW"] = "介於";
-Blockly.Msg["ARDUINO_CONSTRAIN_HIGH"] = "與";
-Blockly.Msg["ARDUINO_CONSTRAIN_TOOLTIP"] = "將數字限制在指定範圍內。詳細資訊請見 https://www.arduino.cc/reference/en/language/functions/math/constrain/";
-
-Blockly.Msg["ARDUINO_MAP_VALUE"] = "映射";
-Blockly.Msg["ARDUINO_MAP_FROMLOW"] = "從下限";
-Blockly.Msg["ARDUINO_MAP_FROMHIGH"] = "上限";
-Blockly.Msg["ARDUINO_MAP_TOLOW"] = "到下限";
-Blockly.Msg["ARDUINO_MAP_TOHIGH"] = "上限";
-Blockly.Msg["ARDUINO_MAP_TOOLTIP"] = "將數字從一個範圍重新映射到另一個範圍。詳細資訊請見 https://www.arduino.cc/reference/en/language/functions/math/map/";
